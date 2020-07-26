@@ -1,15 +1,13 @@
 <?php
 
 
-
-
-
-
-
-
-
-
-
+Route::get('tasks', ['uses'=>'TaskController@index', 'as'=>'tasks.index']);
+Route::Group(['prefix' => 'task'], function(){
+  Route::post('/', ['uses'=>'TaskController@store', 'as'=>'task.store']);
+  Route::get('/{id}', ['uses'=>'TaskController@edit', 'as'=>'task.edit']);
+  Route::put('/{id}', ['uses'=>'TaskController@update', 'as'=>'task.update']);
+  Route::delete('/{id}', ['uses'=>'TaskController@destroy', 'as'=>'task.destroy']);
+});
 
 
 

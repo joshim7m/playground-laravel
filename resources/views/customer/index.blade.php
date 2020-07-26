@@ -14,11 +14,26 @@
                     @csrf
 
                     <div class="form-group">
-                      <input type="text" name="name" class="form-control">
+                      <input type="text" name="name" class="form-control" placeholder="name">
                     </div>
                     <div class="form-group">
-                      <input type="email" name="email" class="form-control">
+                      <input type="email" name="email" class="form-control" placeholder="email">
                     </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                       <div class="form-group">
+                        <input type="text" name="terms" class="form-control" placeholder="terms">
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                          <input type="text" name="contact_amount" class="form-control" placeholder="contact amount">
+                        </div>
+                    </div>
+                    </div>
+
                     <div class="form-group">
                       <select name="company" class="form-control">
                       @foreach($companies as $company)

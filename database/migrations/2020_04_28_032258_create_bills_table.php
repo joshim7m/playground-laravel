@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCustomersTable extends Migration
+class CreateBillsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,22 @@ class CreateCustomersTable extends Migration
      */
     public function up()
     {
-        Schema::create('customers', function (Blueprint $table) {
+        Schema::create('bills', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('customer_id');
             $table->string('name');
             $table->string('email');
-            $table->integer('terms');
-            $table->integer('paid')->default(0)->nullable();
-            $table->integer('due')->nullable();
-            $table->integer('contact_amount');
-            $table->string('company');
+            $table->string('status');
+            $table->string('term');
+            $table->string('month');
+            $table->date('date');
+            $table->integer('amount');
+
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->timestamps();
         });
-    } 
-    
+    }
+
     /**
      * Reverse the migrations.
      *
@@ -33,6 +36,6 @@ class CreateCustomersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customers');
+        Schema::dropIfExists('bills');
     }
 }
